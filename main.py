@@ -1,9 +1,9 @@
-#подключаем билиотеки
+# подключаем билиотеки
 import pygame
 import sys
 from time import sleep
 
-#функция для проверки выиграша
+# функция для проверки выиграша
 def check_win(mas, sign):
   zeroes = 0
   for row in mas:
@@ -22,17 +22,17 @@ def check_win(mas, sign):
   return False
 
 pygame.init()
-#задаём размеры
+# задаём размеры
 size_block = 100
 margin = 15
 width = height = size_block*3 + margin*4
 
-#создаём окно игры
+# создаём окно игры
 size_window = (width,height)
 screen = pygame.display.set_mode(size_window)
 pygame.display.set_caption("Крестики-нолики")
 
-#цвета
+# цвета
 black = (0, 0, 0)
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -45,9 +45,9 @@ query = 0
 
 game_moment = True
 
-#цикл игры
+# цикл игры
 while True:
-  #просматриваем действи пользователя
+  # просматриваем действи пользователя
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       pygame.quit()
@@ -75,7 +75,7 @@ while True:
     else:
       pass
   
-  #рисуем поле
+  # рисуем поле
   for row in range(3):
     for col in range(3):
       if mas[row][col] == 'x':
@@ -93,13 +93,13 @@ while True:
         pygame.draw.line(screen, white, (x + size_block - 5, y + 5), (x + 5, y + size_block - 5), 3)
       elif color == green:
         pygame.draw.circle(screen, white, (x + size_block//2, y + size_block//2), size_block//2 - 3, 3)
-  #проверка выйграша
+  # проверка выйграша
   if (query-1) % 2 == 0:
       game_over = check_win(mas, 'o')
   else:
       game_over = check_win(mas, 'x')
   
-  #окно окончание
+  # окно окончание
   if game_over:
     if game_over == 'x' and game_moment:
       win_X += 1
@@ -137,5 +137,5 @@ while True:
     
     game_moment = False
 
-  pygame.display.update()#метод для обновления дисплея
+  pygame.display.update() # метод для обновления дисплея
   
